@@ -19,7 +19,7 @@ MonoBehaviour:
   m_RequireOpaqueTexture: 0
   m_OpaqueDownsampling: 1
   m_SupportsHDR: 1
-  m_MSAA: 4
+  m_MSAA: 8
   m_RenderScale: 1
   m_SupportsDynamicBatching: 1
   m_DirectionalShadowsSupported: 1
@@ -31,7 +31,6 @@ MonoBehaviour:
   m_LocalShadowsSupported: 1
   m_LocalShadowsAtlasResolution: 1024
   m_SoftShadowsSupported: 1
-  m_CustomShaderVariantStrippingSettings: 0
   m_KeepAdditionalLightVariants: 1
   m_KeepVertexLightVariants: 1
   m_KeepDirectionalShadowVariants: 1
