@@ -5,6 +5,7 @@ using UnityEngine;
 public class Maze : MonoBehaviour
 {
     public Vector2Int m_MapSize;
+    public RoomData m_RoomData;
 
     public MazeRoom m_RoomPrefab;
 
@@ -30,10 +31,13 @@ public class Maze : MonoBehaviour
 
     MazeRoom CreateRoom(Vector2Int coord)
     {
-        var room = Instantiate(m_RoomPrefab, new Vector3(coord.x, coord.y), Quaternion.identity, transform);
-        room.Initialize(coord, CalculateFillPecent(m_MapSize, coord));
+        float posX = coord.x * (m_MapSize.x - 1);
+        float posY = coord.y * (m_MapSize.y - 1);
+
+        var room = Instantiate(m_RoomPrefab, new Vector3(posX, posY), Quaternion.identity, transform);
+        room.Initialize(coord, CalculateFillPecent(m_MapSize, coord), m_RoomData);
         room.name = $"{coord.x}\t{coord.y}";
-        
+
         m_Map[coord.x, coord.y] = room;
 
         return room;
@@ -70,9 +74,24 @@ public class Maze : MonoBehaviour
 
     float CalculateFillPecent(Vector2Int mapSize, Vector2Int coord)
     {
-        float maxValue = mapSize.magnitude;
-        float currentValue = (mapSize - coord).magnitude;
+        var halfMapSize = new Vector2Int(mapSize.x / 2, mapSize.y / 2);
+
+        float maxValue = halfMapSize.magnitude;
+        float currentValue = (halfMapSize - coord).magnitude;
 
         return currentValue / maxValue;
+    }
+
+    private void OnDrawGizmos()
+    {
+        for (int x = 0; x < m_MapSize.x; x++)
+        {
+            for (int y = 0; y < m_MapSize.y; y++)
+            {
+                float posX = x * (m_MapSize.x - 1);
+                float posY = y * (m_MapSize.y - 1);
+                Gizmos.DrawWireCube(new Vector3(posX, posY), new Vector3(m_RoomData.m_Size.x, m_RoomData.m_Size.y, 1));
+            }
+        }
     }
 }
