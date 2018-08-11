@@ -41,12 +41,16 @@ public class MazeRoom : MonoBehaviour
         m_RoomData = roomData;
 
         Debug.Log(fillPercent);
-
-        CreateRoom(roomData.m_Size);
     }
 
-    private void CreateRoom(Vector2Int size)
+    public void CreateRoom()
     {
+        name = "";
+        foreach (var item in m_ActiveDirections)
+        {
+            name = name + item.Key.ToString() + " ";
+        }
+        var size = m_RoomData.m_Size;
         m_Cells = new int[size.x, size.y];
         for (int x = 0; x < size.x; x++)
         {
@@ -55,7 +59,7 @@ public class MazeRoom : MonoBehaviour
                 m_Cells[x, y] = Random.Range(0f, 1f) < m_FillPercent ? 1 : 0;
             }
         }
-        
+
         CreatePassages(m_Cells);
 
         for (int i = 0; i < m_RoomData.m_SmoothIteration; i++)
@@ -105,21 +109,57 @@ public class MazeRoom : MonoBehaviour
 
     void CreatePassages(int[,] map)
     {
+        int mapWidth = map.GetLength(0);
+        int mapHeight = map.GetLength(1);
+
+        int xStart = (mapWidth - m_RoomData.m_PassagesWidth) / 2;
+        int xEnd = (mapWidth + m_RoomData.m_PassagesWidth) / 2;
+        
+        int yStart = (mapHeight - m_RoomData.m_PassagesWidth) / 2;
+        int yEnd = (mapHeight + m_RoomData.m_PassagesWidth) / 2;
+
         if (m_ActiveDirections.ContainsKey(MazeDirection.North))
         {
+            for (int x = xStart; x <= xEnd; x++)
+            {
+                for (int y = (mapHeight - m_RoomData.m_PassagesLength); y < mapHeight; y++)
+                {
+                    map[x,y] = 0;
+                }
+            }
         }
 
         if (m_ActiveDirections.ContainsKey(MazeDirection.South))
         {
+            for (int x = xStart; x <= xEnd; x++)
+            {
+                for (int y = 0; y  < m_RoomData.m_PassagesLength; y++)
+                {
+                    map[x,y] = 0;
+                }
+            }
         }
 
         if (m_ActiveDirections.ContainsKey(MazeDirection.East))
         {
+            for (int x = (mapWidth - m_RoomData.m_PassagesLength); x < mapWidth; x++)
+            {
+                for (int y = yStart; y <= yEnd; y++)
+                {
+                    map[x,y] = 0;
+                }
+            }
         }
 
         if (m_ActiveDirections.ContainsKey(MazeDirection.West))
         {
-            
+            for (int x = 0; x < m_RoomData.m_PassagesLength; x++)
+            {
+                for (int y = yStart; y <= yEnd; y++)
+                {
+                    map[x,y] = 0;
+                }
+            }
         }
     }
 
@@ -155,7 +195,7 @@ public class MazeRoom : MonoBehaviour
 
     public void AddPassage(MazeDirection dir, MazeRoom neighbour)
     {
-        if (!m_ActiveDirections.ContainsKey(dir))
+        //if (!m_ActiveDirections.ContainsKey(dir))
             m_ActiveDirections.Add(dir, neighbour);
 
         if (m_DirectionsList.Contains(dir))

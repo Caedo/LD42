@@ -9,5 +9,5 @@ public class RoomData : ScriptableObject
     public AnimationCurve m_FillCurve;
     public int m_SmoothIteration;
     public int m_PassagesWidth;
-    public int m_PassagesHeight;
+    public int m_PassagesLength;
 }

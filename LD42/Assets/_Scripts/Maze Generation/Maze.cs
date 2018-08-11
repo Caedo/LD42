@@ -16,7 +16,6 @@ public class Maze : MonoBehaviour
         GenerateMap();
     }
 
-    [ContextMenu("Generate")]
     void GenerateMap()
     {
         m_Map = new MazeRoom[m_MapSize.x, m_MapSize.y];
@@ -27,16 +26,21 @@ public class Maze : MonoBehaviour
         {
             DoNextGenerationStep(activeRooms);
         }
+
+        foreach (var room in m_Map)
+        {
+            if (room != null)
+                room.CreateRoom();
+        }
     }
 
     MazeRoom CreateRoom(Vector2Int coord)
     {
-        float posX = coord.x * (m_MapSize.x - 1);
-        float posY = coord.y * (m_MapSize.y - 1);
+        float posX = coord.x * m_RoomData.m_Size.x + m_RoomData.m_Size.x / 2f;
+        float posY = coord.y * m_RoomData.m_Size.x + m_RoomData.m_Size.y / 2f;
 
         var room = Instantiate(m_RoomPrefab, new Vector3(posX, posY), Quaternion.identity, transform);
         room.Initialize(coord, CalculateFillPecent(m_MapSize, coord), m_RoomData);
-        room.name = $"{coord.x}\t{coord.y}";
 
         m_Map[coord.x, coord.y] = room;
 
@@ -88,8 +92,8 @@ public class Maze : MonoBehaviour
         {
             for (int y = 0; y < m_MapSize.y; y++)
             {
-                float posX = x * (m_MapSize.x - 1);
-                float posY = y * (m_MapSize.y - 1);
+                float posX = x * m_RoomData.m_Size.x + m_RoomData.m_Size.x / 2f;
+                float posY = y * m_RoomData.m_Size.x + m_RoomData.m_Size.y / 2f;
                 Gizmos.DrawWireCube(new Vector3(posX, posY), new Vector3(m_RoomData.m_Size.x, m_RoomData.m_Size.y, 1));
             }
         }

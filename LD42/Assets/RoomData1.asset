@@ -11,12 +11,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deff63253771915459022fe056a36000, type: 3}
   m_Name: RoomData1
   m_EditorClassIdentifier: 
-  m_Size: {x: 0, y: 0}
+  m_Size: {x: 15, y: 15}
   m_FillCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_PassagesWidth: 0
-  m_PassagesHeight: 0
+  m_SmoothIteration: 2
+  m_PassagesWidth: 4
+  m_PassagesLength: 7
