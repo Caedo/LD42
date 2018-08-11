@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deff63253771915459022fe056a36000, type: 3}
   m_Name: RoomData1
   m_EditorClassIdentifier: 
-  m_Size: {x: 15, y: 15}
+  m_Size: {x: 20, y: 20}
   m_FillCurve:
     serializedVersion: 2
     m_Curve:

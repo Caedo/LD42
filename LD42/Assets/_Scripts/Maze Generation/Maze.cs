@@ -37,7 +37,7 @@ public class Maze : MonoBehaviour
     MazeRoom CreateRoom(Vector2Int coord)
     {
         float posX = coord.x * m_RoomData.m_Size.x + m_RoomData.m_Size.x / 2f;
-        float posY = coord.y * m_RoomData.m_Size.x + m_RoomData.m_Size.y / 2f;
+        float posY = coord.y * m_RoomData.m_Size.y + m_RoomData.m_Size.y / 2f;
 
         var room = Instantiate(m_RoomPrefab, new Vector3(posX, posY), Quaternion.identity, transform);
         room.Initialize(coord, CalculateFillPecent(m_MapSize, coord), m_RoomData);
@@ -93,7 +93,7 @@ public class Maze : MonoBehaviour
             for (int y = 0; y < m_MapSize.y; y++)
             {
                 float posX = x * m_RoomData.m_Size.x + m_RoomData.m_Size.x / 2f;
-                float posY = y * m_RoomData.m_Size.x + m_RoomData.m_Size.y / 2f;
+                float posY = y * m_RoomData.m_Size.y + m_RoomData.m_Size.y / 2f;
                 Gizmos.DrawWireCube(new Vector3(posX, posY), new Vector3(m_RoomData.m_Size.x, m_RoomData.m_Size.y, 1));
             }
         }
