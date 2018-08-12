@@ -5,7 +5,7 @@ using UnityEngine.Experimental.Rendering;
 
 public class MazeRoom : MonoBehaviour
 {
-    public GameObject m_CubePrefab;
+    public GameObject m_BorderCubePrefab;
 
     float m_FillPercent;
     public Vector2Int m_Coord;
@@ -16,6 +16,11 @@ public class MazeRoom : MonoBehaviour
     private int[,] m_Cells;
 
     private RoomData m_RoomData;
+
+    private MeshFilter m_MeshFilter;
+    private List<Vector3> vertices;
+    private List<int> triangles;
+    private List<Vector2> uvs;
 
     public bool IsFullyInitialized
     {
@@ -39,17 +44,30 @@ public class MazeRoom : MonoBehaviour
 
         m_DirectionsList = MazeHelper.GetRandomDirectionsQueue();
         m_RoomData = roomData;
+    }
 
-        Debug.Log(fillPercent);
+    void CreateMesh()
+    {
+        m_MeshFilter = GetComponent<MeshFilter>();
+        Mesh mesh = new Mesh {name = "Room Mesh"};
+        m_MeshFilter.mesh = mesh;
+
+        mesh.SetVertices(vertices);
+        mesh.SetTriangles(triangles, 0);
+
+        mesh.RecalculateNormals();
     }
 
     public void CreateRoom()
     {
+        vertices = new List<Vector3>();
+        triangles = new List<int>();
         name = "";
         foreach (var item in m_ActiveDirections)
         {
             name = name + item.Key.ToString() + " ";
         }
+
         var size = m_RoomData.m_Size;
         m_Cells = new int[size.x, size.y];
         for (int x = 0; x < size.x; x++)
@@ -67,7 +85,10 @@ public class MazeRoom : MonoBehaviour
             SmoothMap(m_Cells);
         }
 
+        EnsureClosedWalls(m_Cells);
+
         InstantiateCubes();
+        CreateMesh();
     }
 
     private void InstantiateCubes()
@@ -81,8 +102,17 @@ public class MazeRoom : MonoBehaviour
                     float posX = x - m_RoomData.m_Size.x / 2f + 0.5f;
                     float posY = y - m_RoomData.m_Size.y / 2f + 0.5f;
 
-                    var cube = Instantiate(m_CubePrefab, transform);
-                    cube.transform.localPosition = new Vector3(posX, posY);
+                    int neighbours = GetNeighboursCount(m_Cells, new Vector2Int(x, y));
+
+                    if (neighbours != 8 || IsBorderCoord(x, y))
+                    {
+                        var cube = Instantiate(m_BorderCubePrefab, transform);
+                        cube.transform.localPosition = new Vector3(posX, posY);
+                    }
+                    else
+                    {
+                        AddQuadAtPosition(posX, posY);
+                    }
                 }
             }
         }
@@ -107,6 +137,29 @@ public class MazeRoom : MonoBehaviour
         }
     }
 
+    void AddQuadAtPosition(float x, float y)
+    {
+        int vertCount = vertices.Count;
+
+        Vector3 topLeft = new Vector3(x - 0.5f, y + 0.5f, -.5f);
+        Vector3 topRight = new Vector3(x + 0.5f, y + 0.5f, -.5f);
+        Vector3 botLeft = new Vector3(x - 0.5f, y - 0.5f, -.5f);
+        Vector3 botRight = new Vector3(x + 0.5f, y - 0.5f, -0.5f);
+
+        vertices.Add(topLeft);
+        vertices.Add(botLeft);
+        vertices.Add(botRight);
+        vertices.Add(topRight);
+
+        triangles.Add(vertCount + 2);
+        triangles.Add(vertCount + 1);
+        triangles.Add(vertCount);
+
+        triangles.Add(vertCount + 3);
+        triangles.Add(vertCount + 2);
+        triangles.Add(vertCount);
+    }
+
     void CreatePassages(int[,] map)
     {
         int mapWidth = map.GetLength(0);
@@ -114,17 +167,20 @@ public class MazeRoom : MonoBehaviour
 
         int xStart = (mapWidth - m_RoomData.m_PassagesWidth) / 2;
         int xEnd = (mapWidth + m_RoomData.m_PassagesWidth) / 2;
-        
+
         int yStart = (mapHeight - m_RoomData.m_PassagesWidth) / 2;
         int yEnd = (mapHeight + m_RoomData.m_PassagesWidth) / 2;
+
+        int horizontalPassageLength = Mathf.RoundToInt(m_RoomData.m_Size.x / 2f);
+        int verticalPassageLength = Mathf.RoundToInt(m_RoomData.m_Size.y / 2f);
 
         if (m_ActiveDirections.ContainsKey(MazeDirection.North))
         {
             for (int x = xStart; x <= xEnd; x++)
             {
-                for (int y = (mapHeight - m_RoomData.m_PassagesLength); y < mapHeight; y++)
+                for (int y = (mapHeight - verticalPassageLength); y < mapHeight; y++)
                 {
-                    map[x,y] = 0;
+                    map[x, y] = 0;
                 }
             }
         }
@@ -133,34 +189,74 @@ public class MazeRoom : MonoBehaviour
         {
             for (int x = xStart; x <= xEnd; x++)
             {
-                for (int y = 0; y  < m_RoomData.m_PassagesLength; y++)
+                for (int y = 0; y < verticalPassageLength; y++)
                 {
-                    map[x,y] = 0;
+                    map[x, y] = 0;
                 }
             }
         }
 
         if (m_ActiveDirections.ContainsKey(MazeDirection.East))
         {
-            for (int x = (mapWidth - m_RoomData.m_PassagesLength); x < mapWidth; x++)
+            for (int x = (mapWidth - horizontalPassageLength); x < mapWidth; x++)
             {
                 for (int y = yStart; y <= yEnd; y++)
                 {
-                    map[x,y] = 0;
+                    map[x, y] = 0;
                 }
             }
         }
 
         if (m_ActiveDirections.ContainsKey(MazeDirection.West))
         {
-            for (int x = 0; x < m_RoomData.m_PassagesLength; x++)
+            for (int x = 0; x < horizontalPassageLength; x++)
             {
                 for (int y = yStart; y <= yEnd; y++)
                 {
-                    map[x,y] = 0;
+                    map[x, y] = 0;
                 }
             }
         }
+    }
+
+    void EnsureClosedWalls(int[,] map)
+    {
+        if (!m_ActiveDirections.ContainsKey(MazeDirection.North))
+        {
+            for (int i = 0; i < m_RoomData.m_Size.x; i++)
+            {
+                map[i, m_RoomData.m_Size.y - 1] = 1;
+            }
+        }
+
+        if (!m_ActiveDirections.ContainsKey(MazeDirection.South))
+        {
+            for (int i = 0; i < m_RoomData.m_Size.x; i++)
+            {
+                map[i, 0] = 1;
+            }
+        }
+
+        if (!m_ActiveDirections.ContainsKey(MazeDirection.East))
+        {
+            for (int i = 0; i < m_RoomData.m_Size.y; i++)
+            {
+                map[m_RoomData.m_Size.x - 1, i] = 1;
+            }
+        }
+
+        if (!m_ActiveDirections.ContainsKey(MazeDirection.West))
+        {
+            for (int i = 0; i < m_RoomData.m_Size.y; i++)
+            {
+                map[0, i] = 1;
+            }
+        }
+    }
+
+    bool IsBorderCoord(int x, int y)
+    {
+        return x == 0 || x == m_RoomData.m_Size.x - 1 || y == 0 || y == m_RoomData.m_Size.y - 1;
     }
 
     int GetNeighboursCount(int[,] map, Vector2Int coord)
@@ -196,7 +292,7 @@ public class MazeRoom : MonoBehaviour
     public void AddPassage(MazeDirection dir, MazeRoom neighbour)
     {
         //if (!m_ActiveDirections.ContainsKey(dir))
-            m_ActiveDirections.Add(dir, neighbour);
+        m_ActiveDirections.Add(dir, neighbour);
 
         if (m_DirectionsList.Contains(dir))
             m_DirectionsList.Remove(dir);

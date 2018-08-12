@@ -16,7 +16,7 @@ public class Maze : MonoBehaviour
         GenerateMap();
     }
 
-    void GenerateMap()
+    public void GenerateMap()
     {
         m_Map = new MazeRoom[m_MapSize.x, m_MapSize.y];
         List<MazeRoom> activeRooms = new List<MazeRoom>();
@@ -96,6 +96,14 @@ public class Maze : MonoBehaviour
                 float posY = y * m_RoomData.m_Size.y + m_RoomData.m_Size.y / 2f;
                 Gizmos.DrawWireCube(new Vector3(posX, posY), new Vector3(m_RoomData.m_Size.x, m_RoomData.m_Size.y, 1));
             }
+        }
+    }
+
+    public void DestroyMaze()
+    {
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            DestroyImmediate(transform.GetChild(i).gameObject);
         }
     }
 }
