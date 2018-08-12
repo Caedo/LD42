@@ -298,12 +298,12 @@ public class MazeRoom : MonoBehaviour
             m_DirectionsList.Remove(dir);
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        foreach (var room in m_ActiveDirections)
-        {
-            Gizmos.DrawLine(transform.position + Vector3.forward, room.Value.transform.position + Vector3.forward);
-        }
-    }
+//    private void OnDrawGizmos()
+//    {
+//        Gizmos.color = Color.green;
+//        foreach (var room in m_ActiveDirections)
+//        {
+//            Gizmos.DrawLine(transform.position + Vector3.forward, room.Value.transform.position + Vector3.forward);
+//        }
+//    }
 }

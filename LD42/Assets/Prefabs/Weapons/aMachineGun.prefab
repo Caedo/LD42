@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 54355611084678832}
   - component: {fileID: 114765453487177792}
   m_Layer: 0
-  m_Name: ammo_machinegun
+  m_Name: aMachineGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

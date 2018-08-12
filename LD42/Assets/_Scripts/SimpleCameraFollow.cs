@@ -7,12 +7,7 @@ public class SimpleCameraFollow : MonoBehaviour
 
 	public Transform m_Target;
 
-	private Vector3 offset;
-
-	private void Start()
-	{
-		offset = transform.position - m_Target.position;
-	}
+	public Vector3 offset;
 
 	private void Update()
 	{

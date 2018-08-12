@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4873386564220672}
   - component: {fileID: 114628156363266428}
   m_Layer: 0
-  m_Name: machinegunLauncher
+  m_Name: wMachineGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4942220891483782}
   - component: {fileID: 114363483899725626}
+  - component: {fileID: 33262835172862044}
+  - component: {fileID: 23731123245766256}
   m_Layer: 0
   m_Name: Room
   m_TagString: Untagged
@@ -40,6 +42,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23731123245766256
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1266409186156168}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: 2f2409fcb78eb3c4f9fb39206040fd36, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &33262835172862044
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1266409186156168}
+  m_Mesh: {fileID: 0}
 --- !u!114 &114363483899725626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -51,6 +95,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f21d88794ab440839956942021ba9e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CubePrefab: {fileID: 1351064781681944, guid: 186c41c91b018424d91ba100299573f8,
+  m_BorderCubePrefab: {fileID: 1351064781681944, guid: 257043553e0a78a48869b32afdfed38a,
     type: 2}
   m_Coord: {x: 0, y: 0}

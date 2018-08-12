@@ -10,22 +10,21 @@ public class Maze : MonoBehaviour
     public MazeRoom m_RoomPrefab;
 
     private MazeRoom[,] m_Map;
-
-    private void Start()
-    {
-        GenerateMap();
-    }
-
+    public MazeRoom StartRoom { get; private set; }
+    
     public void GenerateMap()
     {
         m_Map = new MazeRoom[m_MapSize.x, m_MapSize.y];
         List<MazeRoom> activeRooms = new List<MazeRoom>();
-        activeRooms.Add(CreateRoom(new Vector2Int(m_MapSize.x / 2, m_MapSize.y / 2)));
+        StartRoom = CreateRoom(new Vector2Int(m_MapSize.x / 2, m_MapSize.y / 2));
+        activeRooms.Add(StartRoom);
 
         while (activeRooms.Count > 0)
         {
             DoNextGenerationStep(activeRooms);
         }
+        
+        CreateExitRoom();
 
         foreach (var room in m_Map)
         {
@@ -45,6 +44,15 @@ public class Maze : MonoBehaviour
         m_Map[coord.x, coord.y] = room;
 
         return room;
+    }
+
+    void CreateExitRoom()
+    {
+        int posX = Random.Range(0, 100) > 50 ? 0 : m_MapSize.x - 1;
+        int posY = Random.Range(0, 100) > 50 ? 0 : m_MapSize.y - 1;
+        
+        m_Map[posX, posY].AddPassage(posY == 0 ? MazeDirection.South : MazeDirection.North, null);
+        
     }
 
     void DoNextGenerationStep(List<MazeRoom> list)
