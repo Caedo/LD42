@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4384915369569342}
   - component: {fileID: 33802037707171952}
   - component: {fileID: 23351038873706824}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Mesh1_Group2_Group1_Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4623657508909400}
   - component: {fileID: 33060974842278524}
   - component: {fileID: 23214544718240286}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Mesh2_Group3_Group1_Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,8 @@ GameObject:
   - component: {fileID: 4550991861796408}
   - component: {fileID: 54355611084678832}
   - component: {fileID: 114765453487177792}
-  m_Layer: 0
+  - component: {fileID: 136591715383051822}
+  m_Layer: 11
   m_Name: aMachineGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,3 +215,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbdbb399f4684b50a1255eabe59aadea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &136591715383051822
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1922018158664510}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.003
+  m_Height: 0.02
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

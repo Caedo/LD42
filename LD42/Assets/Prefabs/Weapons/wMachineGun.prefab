@@ -139,7 +139,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1368228943192986}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 4.8136578, y: -2.0601287, z: 6.793974}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 15, y: 15, z: 15}
   m_Children:
   - {fileID: 4967671139612848}
@@ -307,9 +307,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_WeaponPoint: {fileID: 4475744432615416}
   m_WeaponLevels:
-  - {fileID: 11400000, guid: 4f0153f4daec55d4b9f81ea720ad93ef, type: 2}
+  - {fileID: 11400000, guid: 5c62b69a346353e4db5b4e745d985247, type: 2}
+  - {fileID: 11400000, guid: 74e5797149ff9d34eb78a58e41d79a7b, type: 2}
+  - {fileID: 11400000, guid: d12cb577e98460840bee2834f4daa987, type: 2}
+  - {fileID: 11400000, guid: 466628d773631bb4a89df3263d7fc1d5, type: 2}
+  - {fileID: 11400000, guid: 07ea0565e91060543845e93ab7472491, type: 2}
   m_StartLevel: 0
-  m_ShotType: 2
+  m_ShotType: 1
   m_CurrentLevel: 0
   m_BulletPrefab: {fileID: 114765453487177792, guid: 71014bd3cfb37704cb1187e6efc0f079,
     type: 2}

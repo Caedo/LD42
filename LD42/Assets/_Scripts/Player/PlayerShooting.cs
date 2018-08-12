@@ -31,7 +31,7 @@ public class PlayerShooting : MonoBehaviour
     {
         m_CurrentWeapon.gameObject.SetActive(false);
         m_CurrentWeapon = m_SpawnedWeapons[index];
-        m_CurrentWeapon.gameObject.SetActive(false);
+        m_CurrentWeapon.gameObject.SetActive(true);
     }
 
     public void Fire()

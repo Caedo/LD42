@@ -15,11 +15,14 @@ public class Bullet : MonoBehaviour
         m_Body.velocity = transform.up * stats.m_BulletSpeed;
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
             other.gameObject.GetComponent<LivingEntity>().TakeDamage(100);
         }
+        
+        Debug.Log(other.gameObject.name);
+        Destroy(gameObject);
     }
 }

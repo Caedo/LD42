@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4338492298880008}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4915256679362400}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,8 +52,8 @@ GameObject:
   - component: {fileID: 33968962673299666}
   - component: {fileID: 23033449213252364}
   - component: {fileID: 65138660772805506}
-  m_Layer: 0
-  m_Name: Cube
+  m_Layer: 9
+  m_Name: asd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 114392750415339608}
   - component: {fileID: 54826403275150730}
   - component: {fileID: 114751496006854078}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,3 +239,5 @@ MonoBehaviour:
   m_WeaponGrip: {fileID: 4338492298880008}
   m_WeaponPrefabs:
   - {fileID: 114628156363266428, guid: 9c4da58116ea4fc4185190d9298c3d69, type: 2}
+  - {fileID: 114083190380443540, guid: e819c6be309728f459817d644f412e54, type: 2}
+  - {fileID: 114942604118897306, guid: b6d9738359bce4a489c3a13248f1e0bd, type: 2}

@@ -11,7 +11,7 @@ public class WeaponStats : ScriptableObject
 
     [Header("Spread Settings")] public float m_MaxSpreadAngle;
     [Header("Explosive Settings")] public float m_ExplosiveRange;
-    [Header("Shotgun Settings")] public int m_NumberOfBullets;
-    [Header("Shotgun Settings")] public float m_ShotgunSpreadAngle;
-    [Header("Shotgun Settings")] public float m_ShotgunTimeBetweenBullets;
+    [Header("Shotgun Settings")] 
+    public int m_NumberOfBullets;
+    public float m_ShotgunSpreadAngle;
 }

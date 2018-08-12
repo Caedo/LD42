@@ -9,13 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 424801142164da14ab8b21c62af30ce0, type: 3}
-  m_Name: New Weapon Stats
+  m_Name: Machinegun Lv3
   m_EditorClassIdentifier: 
-  m_DamagePerShot: 1
-  m_TimeBetweenBullets: 0.2
+  m_DamagePerShot: 110
+  m_TimeBetweenBullets: 0.25
   m_BulletSpeed: 15
-  m_MaxSpreadAngle: 45
+  m_MaxSpreadAngle: 15
   m_ExplosiveRange: 0
-  m_NumberOfBullets: 10
-  m_ShotgunSpreadAngle: 45
-  m_ShotgunTimeBetweenBullets: 0
+  m_NumberOfBullets: 0
+  m_ShotgunSpreadAngle: 0
