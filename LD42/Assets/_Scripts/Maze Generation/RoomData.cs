@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class RoomData : ScriptableObject
+[System.Serializable]
+public class RoomData
 {
     public Vector2Int m_Size;
     public AnimationCurve m_FillCurve;

@@ -38,6 +38,7 @@ public class Weapon : MonoBehaviour
     {
         if (m_Timer <= 0)
         {
+            m_Timer = m_WeaponLevels[m_CurrentLevel].m_TimeBetweenBullets;
             switch (m_ShotType)
             {
                 case ShotType.Shotgun:
@@ -50,7 +51,7 @@ public class Weapon : MonoBehaviour
                             m_WeaponLevels[m_CurrentLevel].m_ShotgunSpreadAngle);
                         var rot = m_WeaponPoint.eulerAngles;
                         rot.z += angleZ;
-                        rot.y += angleX;
+                        //rot.y += angleX;
                         CreateBullet(m_WeaponPoint.position, Quaternion.Euler(rot));
                     }
                     break;
