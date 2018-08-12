@@ -3,7 +3,7 @@
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
 {
-    private Rigidbody m_Body;
+    protected Rigidbody m_Body;
 
     private void Awake()
     {
@@ -15,4 +15,11 @@ public class Bullet : MonoBehaviour
         m_Body.velocity = transform.up * stats.m_BulletSpeed;
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            other.gameObject.GetComponent<LivingEntity>().TakeDamage(100);
+        }
+    }
 }

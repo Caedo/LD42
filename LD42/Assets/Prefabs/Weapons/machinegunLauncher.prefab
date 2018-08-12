@@ -309,7 +309,7 @@ MonoBehaviour:
   m_WeaponLevels:
   - {fileID: 11400000, guid: 4f0153f4daec55d4b9f81ea720ad93ef, type: 2}
   m_StartLevel: 0
-  m_ShotType: 1
+  m_ShotType: 2
   m_CurrentLevel: 0
   m_BulletPrefab: {fileID: 114765453487177792, guid: 71014bd3cfb37704cb1187e6efc0f079,
     type: 2}

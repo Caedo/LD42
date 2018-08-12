@@ -16,4 +16,6 @@ MonoBehaviour:
   m_BulletSpeed: 15
   m_MaxSpreadAngle: 45
   m_ExplosiveRange: 0
-  m_NumberOfBullets: 0
+  m_NumberOfBullets: 10
+  m_ShotgunSpreadAngle: 45
+  m_ShotgunTimeBetweenBullets: 0
