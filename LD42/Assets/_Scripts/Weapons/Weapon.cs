@@ -44,14 +44,15 @@ public class Weapon : MonoBehaviour
                 {
                     for (int i = 0; i < m_WeaponLevels[m_CurrentLevel].m_NumberOfBullets; i++)
                     {
-                        float angle = Random.Range(-m_WeaponLevels[m_CurrentLevel].m_ShotgunSpreadAngle,
+                        float angleZ = Random.Range(-m_WeaponLevels[m_CurrentLevel].m_ShotgunSpreadAngle,
                                 m_WeaponLevels[m_CurrentLevel].m_ShotgunSpreadAngle);
-                            var rot = m_WeaponPoint.eulerAngles;
-                            rot.z += angle;
-                            CreateBullet(m_WeaponPoint.position, Quaternion.Euler(rot));
+                        float angleX = Random.Range(-m_WeaponLevels[m_CurrentLevel].m_ShotgunSpreadAngle,
+                            m_WeaponLevels[m_CurrentLevel].m_ShotgunSpreadAngle);
+                        var rot = m_WeaponPoint.eulerAngles;
+                        rot.z += angleZ;
+                        rot.y += angleX;
+                        CreateBullet(m_WeaponPoint.position, Quaternion.Euler(rot));
                     }
-
-                    m_Timer = m_WeaponLevels[m_CurrentLevel].m_ShotgunTimeBetweenBullets;
                     break;
                 }
                 case ShotType.Single:
