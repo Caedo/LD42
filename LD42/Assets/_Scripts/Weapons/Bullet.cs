@@ -3,7 +3,7 @@
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
 {
-    private Rigidbody m_Body;
+    protected Rigidbody m_Body;
 
     private void Awake()
     {
