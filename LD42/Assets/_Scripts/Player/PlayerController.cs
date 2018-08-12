@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 	private PlayerMovement m_Movement;
+	private PlayerShooting m_Shooting;
 	private Camera m_Camera;
 
 	private void Awake()
 	{
 		m_Movement = GetComponent<PlayerMovement>();
+		m_Shooting = GetComponent<PlayerShooting>();
 		m_Camera = Camera.main;
 	}
 
@@ -23,5 +25,10 @@ public class PlayerController : MonoBehaviour
 		
 		m_Movement.Move(new Vector2(h,v));
 		m_Movement.SetLookTarget(mouseWorldPos);
+
+		if (Input.GetMouseButton(0))
+		{
+			m_Shooting.Fire();
+		}
 	}
 }
