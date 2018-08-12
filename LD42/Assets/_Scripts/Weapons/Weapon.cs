@@ -41,18 +41,33 @@ public class Weapon : MonoBehaviour
             switch (m_ShotType)
             {
                 case ShotType.Shotgun:
+                {
+                    for (int i = 0; i < m_WeaponLevels[m_CurrentLevel].m_NumberOfBullets; i++)
+                    {
+                        float angle = Random.Range(-m_WeaponLevels[m_CurrentLevel].m_ShotgunSpreadAngle,
+                                m_WeaponLevels[m_CurrentLevel].m_ShotgunSpreadAngle);
+                            var rot = m_WeaponPoint.eulerAngles;
+                            rot.z += angle;
+                            CreateBullet(m_WeaponPoint.position, Quaternion.Euler(rot));
+                    }
 
+                    m_Timer = m_WeaponLevels[m_CurrentLevel].m_ShotgunTimeBetweenBullets;
                     break;
+                }
                 case ShotType.Single:
+                {
                     CreateBullet(m_WeaponPoint.position, m_WeaponPoint.rotation);
                     break;
+                }
                 case ShotType.Spread:
+                {
                     float angle = Random.Range(-m_WeaponLevels[m_CurrentLevel].m_MaxSpreadAngle,
                         m_WeaponLevels[m_CurrentLevel].m_MaxSpreadAngle);
                     var rot = m_WeaponPoint.eulerAngles;
                     rot.z += angle;
                     CreateBullet(m_WeaponPoint.position, Quaternion.Euler(rot));
                     break;
+                }
             }
         }
     }
