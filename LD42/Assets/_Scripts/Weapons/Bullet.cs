@@ -3,6 +3,7 @@
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
 {
+    public ParticleSystem m_DeathParticle;
     protected Rigidbody m_Body;
     protected float m_Dmg;
 
@@ -23,6 +24,15 @@ public class Bullet : MonoBehaviour
         m_Dmg = dmg;
     }
 
+    protected void SpawnParticles()
+    {
+        if (m_DeathParticle != null)
+        {
+            Destroy(Instantiate(m_DeathParticle, transform.position, transform.rotation).gameObject,
+                m_DeathParticle.main.duration);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         var entity = other.GetComponentInParent<LivingEntity>();
@@ -32,6 +42,8 @@ public class Bullet : MonoBehaviour
         }
 
         //Debug.Log(other.gameObject.name);
+
+        SpawnParticles();
         Destroy(gameObject);
     }
 }

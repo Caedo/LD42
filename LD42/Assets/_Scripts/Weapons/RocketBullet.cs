@@ -22,7 +22,7 @@ public class RocketBullet : Bullet
                 collider.gameObject.GetComponent<LivingEntity>().TakeDamage(damage);
             }
         }
-        
+        SpawnParticles();
         Destroy(gameObject);
     }
 }

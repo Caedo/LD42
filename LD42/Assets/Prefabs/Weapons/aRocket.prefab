@@ -175,6 +175,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88711e1ea7022264ca23746d07e3c733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_DeathParticle: {fileID: 198850628593923798, guid: 9fe23181a53de634db07cd87dc2607b4,
+    type: 2}
   ExplosionForce: 100
   Explosionradius: 5
   MaxDamage: 100
