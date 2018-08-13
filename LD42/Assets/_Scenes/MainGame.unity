@@ -1596,7 +1596,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 200
+      scalar: 400
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -7753,44 +7753,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62a1dbd0170cf742a2d421110f87690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MapSize: {x: 5, y: 5}
+  m_MapSize: {x: 7, y: 7}
   m_RoomData:
-    m_Size: {x: 30, y: 30}
+    m_Size: {x: 35, y: 35}
     m_FillCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.007923126
-        value: 0.4971161
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
+        time: -0.01121521
+        value: 0.4020691
+        inSlope: 0.4431584
+        outSlope: 0.4431584
+        tangentMode: 34
         weightedMode: 0
         inWeight: 0
-        outWeight: 0
+        outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.43420756
-        value: 0.558582
-        inSlope: 0.29986802
-        outSlope: 0.29986802
-        tangentMode: 0
+        time: 1.0069795
+        value: 0.8532906
+        inSlope: 0.4431584
+        outSlope: 0.4431584
+        tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.13168925
-      - serializedVersion: 3
-        time: 1
-        value: 0.9855499
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_SmoothIteration: 3
-    m_PassagesWidth: 4
+    m_PassagesWidth: 6
   m_RoomPrefab: {fileID: 114363483899725626, guid: c3a46afad979c9e40bd381076cb6a54a,
     type: 2}
 --- !u!4 &2061072211

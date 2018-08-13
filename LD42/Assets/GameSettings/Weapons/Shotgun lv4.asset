@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Shotgun lv4
   m_EditorClassIdentifier: 
   m_DamagePerShot: 25
-  m_TimeBetweenBullets: 0.7
-  m_BulletSpeed: 12
+  m_TimeBetweenBullets: 0.6
+  m_BulletSpeed: 20
   m_MaxSpreadAngle: 0
   m_ExplosiveRange: 0
-  m_NumberOfBullets: 10
+  m_NumberOfBullets: 13
   m_ShotgunSpreadAngle: 17

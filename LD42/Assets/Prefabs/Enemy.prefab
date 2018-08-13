@@ -438,7 +438,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 114765453487177792, guid: eb9c4889feec6f347a72a8e48ff53719,
     type: 2}
   bullet_interv: 0.5
-  bullet_speed: 5
+  bullet_speed: 10
   bullet_damage: 10
 --- !u!114 &114748735250025972
 MonoBehaviour:

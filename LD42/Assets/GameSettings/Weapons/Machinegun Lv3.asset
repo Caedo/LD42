@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 424801142164da14ab8b21c62af30ce0, type: 3}
   m_Name: Machinegun Lv3
   m_EditorClassIdentifier: 
-  m_DamagePerShot: 110
+  m_DamagePerShot: 45
   m_TimeBetweenBullets: 0.15
   m_BulletSpeed: 35
   m_MaxSpreadAngle: 4

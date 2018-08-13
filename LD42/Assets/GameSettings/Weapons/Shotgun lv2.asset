@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 424801142164da14ab8b21c62af30ce0, type: 3}
   m_Name: Shotgun lv2
   m_EditorClassIdentifier: 
-  m_DamagePerShot: 25
-  m_TimeBetweenBullets: 0.7
-  m_BulletSpeed: 12
+  m_DamagePerShot: 15
+  m_TimeBetweenBullets: 0.6
+  m_BulletSpeed: 20
   m_MaxSpreadAngle: 0
   m_ExplosiveRange: 0
-  m_NumberOfBullets: 10
+  m_NumberOfBullets: 11
   m_ShotgunSpreadAngle: 20
