@@ -19,7 +19,7 @@ public abstract class PickUp : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var player = other.GetComponentInParent<PlayerController>();
-        Debug.Log(player);
+        //Debug.Log(player);
         if (player)
         {
             AffectPlayer(player);

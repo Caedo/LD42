@@ -4,6 +4,7 @@
 public class Bullet : MonoBehaviour
 {
     protected Rigidbody m_Body;
+    protected float m_Dmg;
 
     private void Awake()
     {
@@ -13,15 +14,23 @@ public class Bullet : MonoBehaviour
     public void Initialize(WeaponStats stats)
     {
         m_Body.velocity = transform.up * stats.m_BulletSpeed;
+        m_Dmg = stats.m_DamagePerShot;
+    }
+
+    public void Initialize(float speed, float dmg)
+    {
+        m_Body.velocity = transform.up * speed;
+        m_Dmg = dmg;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        var entity = other.GetComponentInParent<LivingEntity>();
+        if (entity)
         {
-            other.gameObject.GetComponent<LivingEntity>().TakeDamage(100);
+            entity.TakeDamage(m_Dmg);
         }
-        
+
         //Debug.Log(other.gameObject.name);
         Destroy(gameObject);
     }

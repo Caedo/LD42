@@ -10,6 +10,7 @@ public class PlayerHealth : LivingEntity
     protected override void Die()
     {
         OnPlayerDeath?.Invoke();
+        gameObject.SetActive(false);
     }
 
     public override void TakeDamage(float dmg)

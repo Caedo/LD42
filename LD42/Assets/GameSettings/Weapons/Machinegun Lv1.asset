@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_DamagePerShot: 100
   m_TimeBetweenBullets: 0.3
-  m_BulletSpeed: 15
-  m_MaxSpreadAngle: 15
+  m_BulletSpeed: 30
+  m_MaxSpreadAngle: 5
   m_ExplosiveRange: 0
   m_NumberOfBullets: 0
   m_ShotgunSpreadAngle: 0

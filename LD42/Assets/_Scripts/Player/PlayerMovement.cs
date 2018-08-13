@@ -24,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
         var dir = point - transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
         
-
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 }

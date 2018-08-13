@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GameManager : MonoBehaviour
 {
 
     public Maze m_Maze;
     public PlayerController m_PlayerPrefab;
-    public EndGameCube m_EndGameCubePrefab;
+    public BossController m_BossPrefab;
+    public Cinemachine.CinemachineVirtualCamera m_VirtualCamera;
 
     private void Awake()
     {
@@ -19,9 +21,10 @@ public class GameManager : MonoBehaviour
         Camera.main.GetComponent<SimpleCameraFollow>().m_Target = player.transform;
 
         var endRoomTransform = m_Maze.EndRoom.transform;
-        var cube = Instantiate(m_EndGameCubePrefab, endRoomTransform.position, Quaternion.identity);
+        var cube = Instantiate(m_BossPrefab, endRoomTransform.position, Quaternion.identity);
 
-        cube.OnCubeDestroyed += EndGame;
+        BossController.OnBossDestroyed += EndGame;
+        m_VirtualCamera.Follow = player.transform;
     }
 
     void EndGame()

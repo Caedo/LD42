@@ -90,7 +90,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1448,8 +1448,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -164.2067}
-  m_SizeDelta: {x: 360, y: 53.68268}
+  m_AnchoredPosition: {x: 200, y: -164.44221}
+  m_SizeDelta: {x: 360, y: 53.776886}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1137815325
 MonoBehaviour:
@@ -1728,8 +1728,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -46.84134}
-  m_SizeDelta: {x: 360, y: 53.68268}
+  m_AnchoredPosition: {x: 200, y: -46.888443}
+  m_SizeDelta: {x: 360, y: 53.776886}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1225671742
 MonoBehaviour:
@@ -1778,7 +1778,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Map
+          m_StringArgument: MainGame
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2426,8 +2426,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -105.52402}
-  m_SizeDelta: {x: 360, y: 53.68268}
+  m_AnchoredPosition: {x: 200, y: -105.66533}
+  m_SizeDelta: {x: 360, y: 53.776886}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1741070603
 MonoBehaviour:
@@ -2990,8 +2990,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -222.88937}
-  m_SizeDelta: {x: 360, y: 53.68268}
+  m_AnchoredPosition: {x: 200, y: -223.2191}
+  m_SizeDelta: {x: 360, y: 53.776886}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1834443998
 MonoBehaviour:
