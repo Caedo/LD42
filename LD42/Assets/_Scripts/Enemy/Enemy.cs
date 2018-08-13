@@ -27,6 +27,8 @@ public class Enemy : LivingEntity
             
             Destroy(m_DeathParticle.gameObject, m_DeathParticle.main.duration);
         }
+        
+        PlayDeathSound();
         Destroy(gameObject);
     }
 
