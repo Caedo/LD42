@@ -45,6 +45,7 @@ public class MazeRoom : MonoBehaviour
 
         m_DirectionsList = MazeHelper.GetRandomDirectionsQueue();
         m_RoomData = roomData;
+        
     }
 
     void CreateMesh()

@@ -9,10 +9,12 @@ public static class MazeHelper
         List<int> list =
             new List<int>() {0, 1, 2, 3};
 
-        for (int i = list.Count; i >= 0; i--)
+        for (int i = list.Count - 1; i >= 0; i--)
         {
             int index = Random.Range(0, list.Count);
             queue.Add((MazeDirection)list[index]);
+            
+            list.RemoveAt(index);
         }
 
         return queue;

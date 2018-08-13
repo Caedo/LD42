@@ -24,7 +24,7 @@ public class Weapon : MonoBehaviour
     private float m_Timer;
 
 
-    private void Start()
+    private void Awake()
     {
         CurrentLevel = m_StartLevel;
     }
