@@ -14,9 +14,9 @@ public class AudioScript : MonoBehaviour
     public AudioMixer mixer;
     
     private void Start() {
-        float masterVolume = PlayerPrefs.GetFloat("MasterVolume", 1);
-        float musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1);
-        float effectsVolume = PlayerPrefs.GetFloat("EffectsVolume", 1);
+        float masterVolume = PlayerPrefs.GetFloat("MasterVolume", m_MasterSlider.maxValue);
+        float musicVolume = PlayerPrefs.GetFloat("MusicVolume", m_MusicSlider.maxValue);
+        float effectsVolume = PlayerPrefs.GetFloat("EffectsVolume", m_EffectsSlider.maxValue);
 			
         m_MasterSlider.value = masterVolume;
         m_MusicSlider.value = musicVolume;

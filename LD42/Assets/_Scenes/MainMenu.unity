@@ -90,7 +90,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -304,7 +304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &224953511
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1451,8 +1451,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -164.33089}
-  m_SizeDelta: {x: 360, y: 53.732353}
+  m_AnchoredPosition: {x: 200, y: -164.39735}
+  m_SizeDelta: {x: 360, y: 53.75894}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1137815325
 MonoBehaviour:
@@ -1731,8 +1731,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -46.866177}
-  m_SizeDelta: {x: 360, y: 53.732353}
+  m_AnchoredPosition: {x: 200, y: -46.87947}
+  m_SizeDelta: {x: 360, y: 53.75894}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1225671742
 MonoBehaviour:
@@ -2429,8 +2429,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -105.598526}
-  m_SizeDelta: {x: 360, y: 53.732353}
+  m_AnchoredPosition: {x: 200, y: -105.63841}
+  m_SizeDelta: {x: 360, y: 53.75894}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1741070603
 MonoBehaviour:
@@ -2993,8 +2993,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -223.06323}
-  m_SizeDelta: {x: 360, y: 53.732353}
+  m_AnchoredPosition: {x: 200, y: -223.1563}
+  m_SizeDelta: {x: 360, y: 53.75894}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1834443998
 MonoBehaviour:
@@ -3115,15 +3115,15 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1867447991}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243947538506516934, guid: a1e96907ba2f5dc4eb23edc6deab105a,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: b82070bc89e749e459728e7b023f3f00, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 55428ba2a0164644c9de74809b079194, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3385,7 +3385,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2137650731
 RectTransform:
   m_ObjectHideFlags: 0
