@@ -6,14 +6,14 @@ public abstract class LivingEntity : MonoBehaviour
 {
 
 	public float m_MaxHealth;
-	public float CurrentHealth { get; private set; }
+	public float CurrentHealth { get; protected set; }
 
-	private void Awake()
+	protected virtual void Awake()
 	{
 		CurrentHealth = m_MaxHealth;
 	}
 
-	public void TakeDamage(float dmg)
+	public virtual void TakeDamage(float dmg)
 	{
 		CurrentHealth -= dmg;
 		if (CurrentHealth <= 0)

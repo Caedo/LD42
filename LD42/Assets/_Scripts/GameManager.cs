@@ -7,8 +7,9 @@ public class GameManager : MonoBehaviour
 
     public Maze m_Maze;
     public PlayerController m_PlayerPrefab;
+    public EndGameCube m_EndGameCubePrefab;
 
-    private void Start()
+    private void Awake()
     {
         m_Maze.GenerateMap();
         var startRoomTransform = m_Maze.StartRoom.transform;
@@ -16,5 +17,15 @@ public class GameManager : MonoBehaviour
         
         //JUST FOR NOW!
         Camera.main.GetComponent<SimpleCameraFollow>().m_Target = player.transform;
+
+        var endRoomTransform = m_Maze.EndRoom.transform;
+        var cube = Instantiate(m_EndGameCubePrefab, endRoomTransform.position, Quaternion.identity);
+
+        cube.OnCubeDestroyed += EndGame;
+    }
+
+    void EndGame()
+    {
+        Debug.Log("End Game");
     }
 }

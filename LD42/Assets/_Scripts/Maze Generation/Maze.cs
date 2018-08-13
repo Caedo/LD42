@@ -11,6 +11,7 @@ public class Maze : MonoBehaviour
 
     private MazeRoom[,] m_Map;
     public MazeRoom StartRoom { get; private set; }
+    public MazeRoom EndRoom { get; private set; }
     
     public void GenerateMap()
     {
@@ -24,7 +25,7 @@ public class Maze : MonoBehaviour
             DoNextGenerationStep(activeRooms);
         }
         
-        CreateExitRoom();
+        CreateEndRoom();
 
         foreach (var room in m_Map)
         {
@@ -46,13 +47,14 @@ public class Maze : MonoBehaviour
         return room;
     }
 
-    void CreateExitRoom()
+    void CreateEndRoom()
     {
         int posX = Random.Range(0, 100) > 50 ? 0 : m_MapSize.x - 1;
         int posY = Random.Range(0, 100) > 50 ? 0 : m_MapSize.y - 1;
         
-        m_Map[posX, posY].AddPassage(posY == 0 ? MazeDirection.South : MazeDirection.North, null);
-        
+        m_Map[posX, posY].MakeEndRoom();
+        EndRoom = m_Map[posX, posY];
+
     }
 
     void DoNextGenerationStep(List<MazeRoom> list)

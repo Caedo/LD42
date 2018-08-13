@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using System.Linq;
 
 public class PlayerShooting : MonoBehaviour
 {
@@ -37,5 +37,12 @@ public class PlayerShooting : MonoBehaviour
     public void Fire()
     {
         m_CurrentWeapon.Fire();
+    }
+
+    public void UpgradeRandomWeapon()
+    {
+        var wep = m_SpawnedWeapons.Where(w => w.CurrentLevel != w.MaxLevel).ToList();
+        var rand = Random.Range(0, wep.Count);
+        wep[rand].Upgrade();
     }
 }

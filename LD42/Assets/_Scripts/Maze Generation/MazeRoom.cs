@@ -6,6 +6,7 @@ using UnityEngine.Experimental.Rendering;
 public class MazeRoom : MonoBehaviour
 {
     public GameObject m_BorderCubePrefab;
+    public List<PickUp> m_PossiblePickUps;
 
     float m_FillPercent;
     public Vector2Int m_Coord;
@@ -22,10 +23,10 @@ public class MazeRoom : MonoBehaviour
     private List<int> triangles;
     private List<Vector2> uvs;
 
-    public bool IsFullyInitialized
-    {
-        get { return m_DirectionsList.Count == 0; }
-    }
+    public bool IsFullyInitialized => m_DirectionsList.Count == 0;
+    public bool IsDeadEnd => m_ActiveDirections.Count == 1;
+    public bool IsEndRoom { get; private set; }
+    
 
     public MazeDirection NextRandomDirection
     {
@@ -60,35 +61,78 @@ public class MazeRoom : MonoBehaviour
 
     public void CreateRoom()
     {
+        
         vertices = new List<Vector3>();
         triangles = new List<int>();
         name = "";
-        foreach (var item in m_ActiveDirections)
-        {
-            name = name + item.Key.ToString() + " ";
-        }
-
+        
         var size = m_RoomData.m_Size;
         m_Cells = new int[size.x, size.y];
-        for (int x = 0; x < size.x; x++)
+        
+        if (!IsEndRoom)
         {
-            for (int y = 0; y < size.y; y++)
+            foreach (var item in m_ActiveDirections)
             {
-                m_Cells[x, y] = Random.Range(0f, 1f) < m_FillPercent ? 1 : 0;
+                name = name + item.Key.ToString() + " ";
+            }
+
+
+            for (int x = 0; x < size.x; x++)
+            {
+                for (int y = 0; y < size.y; y++)
+                {
+                    m_Cells[x, y] = Random.Range(0f, 1f) < m_FillPercent ? 1 : 0;
+                }
+            }
+
+            CreatePassages(m_Cells);
+
+            for (int i = 0; i < m_RoomData.m_SmoothIteration; i++)
+            {
+                SmoothMap(m_Cells);
             }
         }
-
-        CreatePassages(m_Cells);
-
-        for (int i = 0; i < m_RoomData.m_SmoothIteration; i++)
+        else
         {
-            SmoothMap(m_Cells);
+            Vector2 center = new Vector2(size.x, size.x) / 2;
+            float radius = Mathf.Min(size.x, size.y) / 2f;
+            for (int x = 0; x < size.x; x++)
+            {
+                for (int y = 0; y < size.y; y++)
+                {
+                    if (Vector2.Distance(center, new Vector2(x,y)) < radius)
+                    {
+                        m_Cells[x, y] = 0;
+                    }
+                    else
+                    {
+                        m_Cells[x, y] = 1;
+                    }
+                }
+            }
+            
+            CreatePassages(m_Cells);
         }
 
         EnsureClosedWalls(m_Cells);
 
         InstantiateCubes();
         CreateMesh();
+        CreatePickUps();
+    }
+    
+    public void MakeEndRoom()
+    {
+        IsEndRoom = true;
+    }
+
+    private void CreatePickUps()
+    {
+        if (IsDeadEnd && ! IsEndRoom)
+        {
+            var index = Random.Range(0, m_PossiblePickUps.Count);
+            Instantiate(m_PossiblePickUps[index], transform.position, Quaternion.identity);
+        }
     }
 
     private void InstantiateCubes()
@@ -171,8 +215,8 @@ public class MazeRoom : MonoBehaviour
         int yStart = (mapHeight - m_RoomData.m_PassagesWidth) / 2;
         int yEnd = (mapHeight + m_RoomData.m_PassagesWidth) / 2;
 
-        int horizontalPassageLength = Mathf.RoundToInt(m_RoomData.m_Size.x / 2f);
-        int verticalPassageLength = Mathf.RoundToInt(m_RoomData.m_Size.y / 2f);
+        int horizontalPassageLength = Mathf.RoundToInt(m_RoomData.m_Size.x / 2f) + 1;
+        int verticalPassageLength = Mathf.RoundToInt(m_RoomData.m_Size.y / 2f) + 1;
 
         if (m_ActiveDirections.ContainsKey(MazeDirection.North))
         {

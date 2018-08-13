@@ -17,7 +17,8 @@ public class Weapon : MonoBehaviour
     public int m_StartLevel;
     public ShotType m_ShotType;
 
-    [HideInInspector] public int m_CurrentLevel;
+    public int CurrentLevel { get; private set; }
+    public int MaxLevel => m_WeaponLevels.Count;
 
     public Bullet m_BulletPrefab;
 
@@ -26,7 +27,7 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
-        m_CurrentLevel = m_StartLevel;
+        CurrentLevel = m_StartLevel;
     }
 
     private void Update()
@@ -34,21 +35,26 @@ public class Weapon : MonoBehaviour
         m_Timer -= Time.deltaTime;
     }
 
+    public void Upgrade()
+    {
+        CurrentLevel++;
+    }
+
     public void Fire()
     {
         if (m_Timer <= 0)
         {
-            m_Timer = m_WeaponLevels[m_CurrentLevel].m_TimeBetweenBullets;
+            m_Timer = m_WeaponLevels[CurrentLevel].m_TimeBetweenBullets;
             switch (m_ShotType)
             {
                 case ShotType.Shotgun:
                 {
-                    for (int i = 0; i < m_WeaponLevels[m_CurrentLevel].m_NumberOfBullets; i++)
+                    for (int i = 0; i < m_WeaponLevels[CurrentLevel].m_NumberOfBullets; i++)
                     {
-                        float angleZ = Random.Range(-m_WeaponLevels[m_CurrentLevel].m_ShotgunSpreadAngle,
-                                m_WeaponLevels[m_CurrentLevel].m_ShotgunSpreadAngle);
-                        float angleX = Random.Range(-m_WeaponLevels[m_CurrentLevel].m_ShotgunSpreadAngle,
-                            m_WeaponLevels[m_CurrentLevel].m_ShotgunSpreadAngle);
+                        float angleZ = Random.Range(-m_WeaponLevels[CurrentLevel].m_ShotgunSpreadAngle,
+                                m_WeaponLevels[CurrentLevel].m_ShotgunSpreadAngle);
+                        float angleX = Random.Range(-m_WeaponLevels[CurrentLevel].m_ShotgunSpreadAngle,
+                            m_WeaponLevels[CurrentLevel].m_ShotgunSpreadAngle);
                         var rot = m_WeaponPoint.eulerAngles;
                         rot.z += angleZ;
                         //rot.y += angleX;
@@ -63,8 +69,8 @@ public class Weapon : MonoBehaviour
                 }
                 case ShotType.Spread:
                 {
-                    float angle = Random.Range(-m_WeaponLevels[m_CurrentLevel].m_MaxSpreadAngle,
-                        m_WeaponLevels[m_CurrentLevel].m_MaxSpreadAngle);
+                    float angle = Random.Range(-m_WeaponLevels[CurrentLevel].m_MaxSpreadAngle,
+                        m_WeaponLevels[CurrentLevel].m_MaxSpreadAngle);
                     var rot = m_WeaponPoint.eulerAngles;
                     rot.z += angle;
                     CreateBullet(m_WeaponPoint.position, Quaternion.Euler(rot));
@@ -77,6 +83,6 @@ public class Weapon : MonoBehaviour
     void CreateBullet(Vector3 position, Quaternion rotation)
     {
         var bullet = Instantiate(m_BulletPrefab, position, rotation);
-        bullet.Initialize(m_WeaponLevels[m_CurrentLevel]);
+        bullet.Initialize(m_WeaponLevels[CurrentLevel]);
     }
 }

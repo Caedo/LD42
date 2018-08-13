@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
             other.gameObject.GetComponent<LivingEntity>().TakeDamage(100);
         }
         
-        Debug.Log(other.gameObject.name);
+        //Debug.Log(other.gameObject.name);
         Destroy(gameObject);
     }
 }

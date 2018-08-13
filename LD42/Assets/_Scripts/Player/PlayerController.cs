@@ -6,12 +6,14 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerMovement m_Movement;
     private PlayerShooting m_Shooting;
+    private PlayerHealth m_Health;
     private Camera m_Camera;
 
     private void Awake()
     {
         m_Movement = GetComponent<PlayerMovement>();
         m_Shooting = GetComponent<PlayerShooting>();
+        m_Health = GetComponent<PlayerHealth>();
         m_Camera = Camera.main;
     }
 
@@ -46,5 +48,15 @@ public class PlayerController : MonoBehaviour
         {
             m_Shooting.SwitchWeapon(2);
         }
+    }
+
+    public void AddHealth(float amount)
+    {
+        m_Health.Heal(amount);
+    }
+
+    public void UpgradeWeapon()
+    {
+        m_Shooting.UpgradeRandomWeapon();
     }
 }
