@@ -8,6 +8,8 @@ public class MazeRoom : MonoBehaviour
     public GameObject m_BorderCubePrefab;
     public List<PickUp> m_PossiblePickUps;
 
+    public Enemy m_EnemyPrefab;
+
     float m_FillPercent;
     public Vector2Int m_Coord;
 
@@ -26,7 +28,8 @@ public class MazeRoom : MonoBehaviour
     public bool IsFullyInitialized => m_DirectionsList.Count == 0;
     public bool IsDeadEnd => m_ActiveDirections.Count == 1;
     public bool IsEndRoom { get; private set; }
-    
+    public bool IsStartRoom { get; set; }
+
 
     public MazeDirection NextRandomDirection
     {
@@ -45,7 +48,6 @@ public class MazeRoom : MonoBehaviour
 
         m_DirectionsList = MazeHelper.GetRandomDirectionsQueue();
         m_RoomData = roomData;
-        
     }
 
     void CreateMesh()
@@ -62,14 +64,13 @@ public class MazeRoom : MonoBehaviour
 
     public void CreateRoom()
     {
-        
         vertices = new List<Vector3>();
         triangles = new List<int>();
         name = "";
-        
+
         var size = m_RoomData.m_Size;
         m_Cells = new int[size.x, size.y];
-        
+
         if (!IsEndRoom)
         {
             foreach (var item in m_ActiveDirections)
@@ -101,7 +102,7 @@ public class MazeRoom : MonoBehaviour
             {
                 for (int y = 0; y < size.y; y++)
                 {
-                    if (Vector2.Distance(center, new Vector2(x,y)) < radius)
+                    if (Vector2.Distance(center, new Vector2(x, y)) < radius)
                     {
                         m_Cells[x, y] = 0;
                     }
@@ -111,7 +112,7 @@ public class MazeRoom : MonoBehaviour
                     }
                 }
             }
-            
+
             CreatePassages(m_Cells);
         }
 
@@ -119,9 +120,13 @@ public class MazeRoom : MonoBehaviour
 
         InstantiateCubes();
         CreateMesh();
-        CreatePickUps();
+        if (Application.isPlaying)
+        {
+            CreatePickUps();
+            CreateEnemy();
+        }
     }
-    
+
     public void MakeEndRoom()
     {
         IsEndRoom = true;
@@ -129,10 +134,18 @@ public class MazeRoom : MonoBehaviour
 
     private void CreatePickUps()
     {
-        if (IsDeadEnd && ! IsEndRoom)
+        if (IsDeadEnd && !IsEndRoom)
         {
             var index = Random.Range(0, m_PossiblePickUps.Count);
             Instantiate(m_PossiblePickUps[index], transform.position, Quaternion.identity);
+        }
+    }
+
+    void CreateEnemy()
+    {
+        if (!IsDeadEnd && !IsStartRoom)
+        {
+            Instantiate(m_EnemyPrefab, transform.position, Quaternion.identity);
         }
     }
 

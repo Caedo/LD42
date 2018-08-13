@@ -10,6 +10,8 @@ public class Enemy : LivingEntity
     public float min_shooting_distance;
     public float min_distance;
 
+    public ParticleSystem m_DeathParticle;
+
     public EnemyAttack EnemyWeapon1;
 
     private bool foundPlayer;
@@ -18,6 +20,13 @@ public class Enemy : LivingEntity
 
     protected override void Die()
     {
+        if (m_DeathParticle != null)
+        {
+            m_DeathParticle.Play();
+            m_DeathParticle.transform.parent = null;
+            
+            Destroy(m_DeathParticle.gameObject, m_DeathParticle.main.duration);
+        }
         Destroy(gameObject);
     }
 
@@ -30,9 +39,8 @@ public class Enemy : LivingEntity
         }
     }
 
-    protected override void Awake ()
+    private void Start()
     {
-        base.Awake();
         var p = GameObject.FindGameObjectWithTag("Player");
         if (p)
         {
@@ -40,8 +48,8 @@ public class Enemy : LivingEntity
             player = p.transform;
         }
     }
-	
-	// Update is called once per frame
+
+    // Update is called once per frame
 	void Update ()
     {
         if(!foundPlayer)

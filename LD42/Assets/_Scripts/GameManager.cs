@@ -12,16 +12,11 @@ public class GameManager : MonoBehaviour
     public BossController m_BossPrefab;
     public Cinemachine.CinemachineVirtualCamera m_VirtualCamera;
 
-    public GameObject m_Enemy;
-
-    Vector3 pos;
-
 
     private void Awake()
     {
         m_Maze.GenerateMap();
         var startRoomTransform = m_Maze.StartRoom.transform;
-        pos = startRoomTransform.position;
         var player = Instantiate(m_PlayerPrefab, startRoomTransform.position, Quaternion.identity);
 
 
@@ -33,11 +28,6 @@ public class GameManager : MonoBehaviour
         Instantiate(m_BossPrefab, endRoomTransform.position, Quaternion.identity);
 
         m_VirtualCamera.Follow = player.transform;
-        InvokeRepeating("SpawnEnemy", 10.0f, 10.0f);
     }
 
-    private void SpawnEnemy()
-    {
-        Instantiate(m_Enemy, pos, Quaternion.identity);
-    }
 }

@@ -18,6 +18,7 @@ public class Maze : MonoBehaviour
         m_Map = new MazeRoom[m_MapSize.x, m_MapSize.y];
         List<MazeRoom> activeRooms = new List<MazeRoom>();
         StartRoom = CreateRoom(new Vector2Int(m_MapSize.x / 2, m_MapSize.y / 2));
+        StartRoom.IsStartRoom = true;
         activeRooms.Add(StartRoom);
 
         while (activeRooms.Count > 0)

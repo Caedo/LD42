@@ -100,4 +100,6 @@ MonoBehaviour:
   m_PossiblePickUps:
   - {fileID: 114670975228844000, guid: 5023440c86c7f4744bc593381a322df7, type: 2}
   - {fileID: 114176823443969718, guid: f4545257491120840b244d2561326309, type: 2}
+  m_EnemyPrefab: {fileID: 114748735250025972, guid: f18c1f930e4ae9b4f8d94615db259d9e,
+    type: 2}
   m_Coord: {x: 0, y: 0}
