@@ -11,6 +11,7 @@ public class PlayerShooting : MonoBehaviour
 
     private List<Weapon> m_SpawnedWeapons;
     private Weapon m_CurrentWeapon;
+    public int CurrentWeaponIndex { get; private set; }
 
     private void Awake()
     {
@@ -29,9 +30,15 @@ public class PlayerShooting : MonoBehaviour
 
     public void SwitchWeapon(int index)
     {
+        CurrentWeaponIndex = index;
         m_CurrentWeapon.gameObject.SetActive(false);
         m_CurrentWeapon = m_SpawnedWeapons[index];
         m_CurrentWeapon.gameObject.SetActive(true);
+    }
+
+    public int WeaponLevel(int index)
+    {
+        return m_SpawnedWeapons[index].CurrentLevel;
     }
 
     public void Fire()
