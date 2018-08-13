@@ -34,6 +34,6 @@ public class GameEndUI : MonoBehaviour
 
     public void ToMainMenu()
     {
-        
+        SceneManager.LoadScene("MainMenu");
     }
 }
