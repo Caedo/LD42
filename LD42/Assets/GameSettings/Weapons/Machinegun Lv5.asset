@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Machinegun Lv5
   m_EditorClassIdentifier: 
   m_DamagePerShot: 130
-  m_TimeBetweenBullets: 0.2
-  m_BulletSpeed: 30
-  m_MaxSpreadAngle: 5
+  m_TimeBetweenBullets: 0.1
+  m_BulletSpeed: 35
+  m_MaxSpreadAngle: 4
   m_ExplosiveRange: 0
   m_NumberOfBullets: 0
   m_ShotgunSpreadAngle: 0
