@@ -90,7 +90,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5869,6 +5869,7 @@ MonoBehaviour:
   m_BossPrefab: {fileID: 114237908196322154, guid: a7fc991ee83e8464f9967beec048f6bd,
     type: 2}
   m_VirtualCamera: {fileID: 1973141739}
+  m_Enemy: {fileID: 1436715030255582, guid: f18c1f930e4ae9b4f8d94615db259d9e, type: 2}
 --- !u!4 &930856901
 Transform:
   m_ObjectHideFlags: 0

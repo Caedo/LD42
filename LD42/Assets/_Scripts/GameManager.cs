@@ -34,12 +34,12 @@ public class GameManager : MonoBehaviour
 
         BossController.OnBossDestroyed += EndGame;
         m_VirtualCamera.Follow = player.transform;
+        InvokeRepeating("SpawnEnemy", 10.0f, 10.0f);
     }
 
     void EndGame()
     {
         Debug.Log("End Game");
-        InvokeRepeating("SpawnEnemy", 10.0f, 0.5f);
     }
 
     private void SpawnEnemy()

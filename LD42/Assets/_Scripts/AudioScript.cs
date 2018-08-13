@@ -20,6 +20,6 @@ public class AudioScript : MonoBehaviour
 
     public void SetEffetcsVolume(float level)
     {
-        mixer.SetFloat("EffetcsVolume", (-80.0f * Mathf.Pow(Mathf.Abs(level), 6)));
+        mixer.SetFloat("EffectsVolume", (-80.0f * Mathf.Pow(Mathf.Abs(level), 6)));
     }
 }

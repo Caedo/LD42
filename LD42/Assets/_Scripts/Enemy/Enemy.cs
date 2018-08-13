@@ -3,16 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Enemy : MonoBehaviour
+public class Enemy : LivingEntity
 {
     public float speed;
     public float max_distance;
+    public float min_shooting_distance;
     public float min_distance;
+
+    public EnemyAttack EnemyWeapon1;
+
+    private bool is_attacking = false;
     Transform player;               // Reference to the player's position.
 
-    // Use this for initialization
-    void Awake ()
+    protected override void Die()
     {
+        Destroy(gameObject);
+    }
+
+    public override void TakeDamage(float dmg)
+    {
+        CurrentHealth -= dmg;
+        if (CurrentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    protected override void Awake ()
+    {
+        base.Awake();
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 	
@@ -32,6 +51,17 @@ public class Enemy : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, angle);
             //transform.position = Vector3.MoveTowards(transform.position, player.position, step);
             GetComponent<Rigidbody>().AddForce(direction * step);
+        }
+
+        is_attacking = distance <= min_shooting_distance ? true : false;
+
+        if(is_attacking)
+        {
+            EnemyWeapon1.StartAttacking();
+        }
+        else
+        {
+            EnemyWeapon1.StopAttacking();
         }
 	}
 }
