@@ -482,7 +482,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 375.9833, y: -44.519707}
+  m_AnchoredPosition: {x: 375.9833, y: -44.51326}
   m_SizeDelta: {x: 205.3, y: 86.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &180972837
@@ -5799,7 +5799,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 639.31665, y: -44.519707}
+  m_AnchoredPosition: {x: 639.31665, y: -44.51326}
   m_SizeDelta: {x: 205.3, y: 86.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &765105997
@@ -6241,7 +6241,7 @@ MonoBehaviour:
   m_BossPrefab: {fileID: 114237908196322154, guid: a7fc991ee83e8464f9967beec048f6bd,
     type: 2}
   m_VirtualCamera: {fileID: 1973141739}
-  m_Enemy: {fileID: 0}
+  m_Enemy: {fileID: 1436715030255582, guid: f18c1f930e4ae9b4f8d94615db259d9e, type: 2}
 --- !u!4 &930856901
 Transform:
   m_ObjectHideFlags: 0
@@ -6362,7 +6362,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 112.65, y: -44.519714}
+  m_AnchoredPosition: {x: 112.65, y: -44.51326}
   m_SizeDelta: {x: 205.3, y: 86.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1114494164

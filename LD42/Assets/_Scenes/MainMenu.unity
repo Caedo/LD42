@@ -1448,8 +1448,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -164.2067}
-  m_SizeDelta: {x: 360, y: 53.68268}
+  m_AnchoredPosition: {x: 200, y: -164.33089}
+  m_SizeDelta: {x: 360, y: 53.732353}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1137815325
 MonoBehaviour:
@@ -1728,8 +1728,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -46.84134}
-  m_SizeDelta: {x: 360, y: 53.68268}
+  m_AnchoredPosition: {x: 200, y: -46.866177}
+  m_SizeDelta: {x: 360, y: 53.732353}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1225671742
 MonoBehaviour:
@@ -2426,8 +2426,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -105.52402}
-  m_SizeDelta: {x: 360, y: 53.68268}
+  m_AnchoredPosition: {x: 200, y: -105.598526}
+  m_SizeDelta: {x: 360, y: 53.732353}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1741070603
 MonoBehaviour:
@@ -2724,7 +2724,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1789345721
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2990,8 +2990,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -222.88937}
-  m_SizeDelta: {x: 360, y: 53.68268}
+  m_AnchoredPosition: {x: 200, y: -223.06323}
+  m_SizeDelta: {x: 360, y: 53.732353}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1834443998
 MonoBehaviour:
@@ -3247,8 +3247,8 @@ Camera:
   m_GameObject: {fileID: 2071740025}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}

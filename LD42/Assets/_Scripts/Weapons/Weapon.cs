@@ -22,11 +22,12 @@ public class Weapon : MonoBehaviour
     public Bullet m_BulletPrefab;
 
     private float m_Timer;
-
+    private AudioSource m_Audio;
 
     private void Awake()
     {
         CurrentLevel = m_StartLevel;
+        m_Audio = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -81,6 +82,11 @@ public class Weapon : MonoBehaviour
 
     void CreateBullet(Vector3 position, Quaternion rotation)
     {
+        if (m_Audio != null)
+        {
+            m_Audio.Stop();
+            m_Audio.Play();
+        }
         var bullet = Instantiate(m_BulletPrefab, position, rotation);
         bullet.Initialize(m_WeaponLevels[CurrentLevel]);
     }

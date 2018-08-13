@@ -12,6 +12,7 @@ public class Enemy : LivingEntity
 
     public EnemyAttack EnemyWeapon1;
 
+    private bool foundPlayer;
     private bool is_attacking = false;
     Transform player;               // Reference to the player's position.
 
@@ -32,12 +33,20 @@ public class Enemy : LivingEntity
     protected override void Awake ()
     {
         base.Awake();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        var p = GameObject.FindGameObjectWithTag("Player");
+        if (p)
+        {
+            foundPlayer = true;
+            player = p.transform;
+        }
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
+        if(!foundPlayer)
+            return;
+        
         float step = speed * Time.deltaTime;
         float distance = Vector3.Distance(player.position, transform.position);
 

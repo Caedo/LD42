@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class PickUp : MonoBehaviour
 {
+    public AudioSource m_Audio;
     
     [Header("Animation")] 
     public float m_RotationSpeed;
@@ -23,6 +24,12 @@ public abstract class PickUp : MonoBehaviour
         if (player)
         {
             AffectPlayer(player);
+            if (m_Audio)
+            {
+                m_Audio.Play();
+                m_Audio.transform.parent = null;
+                Destroy(m_Audio.gameObject, m_Audio.clip.length);
+            }
             Destroy(gameObject);
         }
     }
