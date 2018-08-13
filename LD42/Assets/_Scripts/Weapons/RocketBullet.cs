@@ -5,23 +5,29 @@ using UnityEngine;
 
 public class RocketBullet : Bullet
 {
-    public float ExplosionForce = 100f;
-    public float Explosionradius = 5f;
-    public float MaxDamage = 100f;
+    private float m_ExplosionRadius;
+
+    public override void Initialize(WeaponStats stats)
+    {
+        base.Initialize(stats);
+
+        m_ExplosionRadius = stats.m_ExplosiveRange;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        Collider[] colliders = Physics.OverlapSphere(this.transform.position, ExplosionForce);
+        Collider[] colliders =
+            Physics.OverlapSphere(this.transform.position, m_ExplosionRadius, LayerMask.GetMask("Enemy"));
 
         foreach (var collider in colliders)
         {
-            if (collider.gameObject.CompareTag("Enemy"))
+            var c = collider.GetComponentInParent<LivingEntity>();
+            if (c)
             {
-                float damage = MaxDamage * Explosionradius /
-                               Vector3.Distance(this.transform.position, collider.bounds.center);
-                collider.gameObject.GetComponent<LivingEntity>().TakeDamage(damage);
+                c.TakeDamage(m_Dmg);
             }
         }
+
         SpawnParticles();
         Destroy(gameObject);
     }

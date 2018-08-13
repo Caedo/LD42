@@ -26,20 +26,14 @@ public class GameManager : MonoBehaviour
 
 
         //JUST FOR NOW!
-        Camera.main.GetComponent<SimpleCameraFollow>().m_Target = player.transform;
+        //Camera.main.GetComponent<SimpleCameraFollow>().m_Target = player.transform;
 
 
         var endRoomTransform = m_Maze.EndRoom.transform;
-        var cube = Instantiate(m_BossPrefab, endRoomTransform.position, Quaternion.identity);
+        Instantiate(m_BossPrefab, endRoomTransform.position, Quaternion.identity);
 
-        BossController.OnBossDestroyed += EndGame;
         m_VirtualCamera.Follow = player.transform;
         InvokeRepeating("SpawnEnemy", 10.0f, 10.0f);
-    }
-
-    void EndGame()
-    {
-        Debug.Log("End Game");
     }
 
     private void SpawnEnemy()

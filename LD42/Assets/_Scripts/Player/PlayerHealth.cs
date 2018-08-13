@@ -4,8 +4,21 @@ using UnityEngine;
 
 public class PlayerHealth : LivingEntity
 {
-    public static event System.Action OnPlayerDeath;
-    public static event System.Action<float> OnPlayerHealthChanged;
+    public static PlayerHealth Instance { get; private set; }
+    
+    public event System.Action OnPlayerDeath;
+    public event System.Action<float> OnPlayerHealthChanged;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        if (Instance != null)
+        {
+            Destroy(Instance.gameObject);
+        }
+
+        Instance = this;
+    }
 
     protected override void Die()
     {

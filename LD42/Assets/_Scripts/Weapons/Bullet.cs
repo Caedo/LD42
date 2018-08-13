@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
         m_Body = GetComponent<Rigidbody>();
     }
 
-    public void Initialize(WeaponStats stats)
+    public virtual void Initialize(WeaponStats stats)
     {
         m_Body.velocity = transform.up * stats.m_BulletSpeed;
         m_Dmg = stats.m_DamagePerShot;

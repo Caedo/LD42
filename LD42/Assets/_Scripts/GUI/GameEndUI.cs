@@ -12,7 +12,7 @@ public class GameEndUI : MonoBehaviour
 
     private void Start()
     {
-        PlayerHealth.OnPlayerDeath += OnPlayerDeath;
+        PlayerHealth.Instance.OnPlayerDeath += OnPlayerDeath;
         BossController.OnBossDestroyed += OnBossDeath;
     }
 

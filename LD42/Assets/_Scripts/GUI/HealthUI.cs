@@ -11,7 +11,7 @@ public class HealthUI : MonoBehaviour
 
     private void Start()
     {
-        PlayerHealth.OnPlayerHealthChanged += OnPlayerHealthChanged;
+        PlayerHealth.Instance.OnPlayerHealthChanged += OnPlayerHealthChanged;
         m_PlayerHealth = FindObjectOfType<PlayerHealth>();
     }
 
